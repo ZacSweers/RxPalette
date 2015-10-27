@@ -1,0 +1,67 @@
+subprojects {
+    buildscript {
+        repositories {
+            jcenter()
+            mavenCentral()
+        }
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    group = GROUP
+    version = VERSION_NAME
+
+    // The default 'assemble' task only applies to normal variants. Add test variants as well.
+    afterEvaluate {
+        android.testVariants.all { variant ->
+            tasks.getByName('assemble').dependsOn variant.assemble
+        }
+
+        // TODO Why does android studio hiccup on this?
+//        tasks.withType(com.android.build.gradle.internal.tasks.AndroidTestTask.getClass()) { task ->
+//            task.doFirst {
+//                logging.level = LogLevel.INFO
+//            }
+//            task.doLast {
+//                logging.level = LogLevel.LIFECYCLE
+//            }
+//        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    androidPlugin = 'com.android.tools.build:gradle:1.3.1'
+    minSdkVersion = 14
+    targetSdkVersion = 23
+    compileSdkVersion = 23
+    buildToolsVersion = '23.0.1'
+
+    ci = 'true'.equals(System.getenv('CI'))
+
+    def kotlinVersion = '1.0.0-beta-1038'
+    kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    def supportVersion = '23.1.0'
+    supportAnnotations = "com.android.support:support-annotations:$supportVersion"
+    supportV4 = "com.android.support:support-v4:$supportVersion"
+    supportRecyclerView = "com.android.support:recyclerview-v7:$supportVersion"
+    supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
+    supportPalette = "com.android.support:palette-v7:$supportVersion"
+
+    supportTestRunner = 'com.android.support.test:runner:0.4'
+    supportTestRules = 'com.android.support.test:rules:0.4'
+    supportTestEspresso = 'com.android.support.test.espresso:espresso-core:2.2.1'
+    supportTestEspressoContrib = 'com.android.support.test.espresso:espresso-contrib:2.2.1'
+    rxJava = 'io.reactivex:rxjava:1.0.14'
+    rxAndroid = 'io.reactivex:rxandroid:1.0.1'
+    junit = 'junit:junit:4.12'
+    truth = 'com.google.truth:truth:0.27'
+}

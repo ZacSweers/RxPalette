@@ -1,0 +1,4 @@
+rootProject.name = 'rxpalette-root'
+include ':rxpalette'
+include ':rxpalette-kotlin'
+include ':sample'
