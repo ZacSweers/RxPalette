@@ -3,6 +3,40 @@ RxPalette
 
 RxJava binding APIs for the [Palette](palette) Android library.
 
+Usage
+-----
+
+Java:
+```java
+RxPalette.generate(bitmap)
+        .subscribe({ palette ->
+            // Do stuff
+        });
+        
+RxPalette.generate(new Palette.Builder().maximumColorCount(10))
+        .subscribe({ palette ->
+            // Do stuff
+        });
+```
+
+Kotlin:
+```java
+// Extensions directly applied to Palette or Palette.Builder
+Palette.generate(bitmap)
+        .subscribe({ palette ->
+            // Do stuff
+        });
+        
+new Palette.Builder()
+        .maximumColorCount(10)
+        .generate(bitmap)
+        .subscribe({ palette ->
+            // Do stuff
+        });
+```
+
+To make the calls asynchronous, replace `generate` with `generateAsync`.
+
 Download
 --------
 
@@ -15,6 +49,8 @@ Kotlin bindings:
 ```groovy
 compile 'io.sweers.rxpalette:rxpalette-kotlin:0.1.0'
 ```
+
+Snapshots of the development version are available in [Sonatype's snapshots repository](snapshots).
 
 License
 -------
@@ -34,3 +70,4 @@ License
     limitations under the License.
 
  [palette]: https://developer.android.com/reference/android/support/v7/graphics/Palette.html
+ [snapshots]: https://oss.sonatype.org/content/repositories/snapshots/
