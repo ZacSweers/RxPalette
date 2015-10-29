@@ -13,7 +13,7 @@ RxPalette.generate(bitmap)
             // Do stuff
         });
         
-RxPalette.generate(new Palette.Builder().maximumColorCount(10))
+RxPalette.generate(new Palette.Builder(bitmap).maximumColorCount(10))
         .subscribe({ palette ->
             // Do stuff
         });
