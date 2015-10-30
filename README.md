@@ -20,22 +20,15 @@ RxPalette.generate(new Palette.Builder(bitmap).maximumColorCount(10))
 ```
 
 Kotlin:
-```java
-// Extensions directly applied to Palette or Palette.Builder
-Palette.generate(bitmap)
-        .subscribe({ palette ->
-            // Do stuff
-        });
-        
-new Palette.Builder()
+```kotlin
+// Extensions directly applied Palette.Builder
+Palette.Builder(bitmap)
         .maximumColorCount(10)
-        .generate(bitmap)
+        .asObservable()
         .subscribe({ palette ->
             // Do stuff
         });
 ```
-
-To make the calls asynchronous, replace `generate` with `generateAsync`.
 
 Download
 --------
