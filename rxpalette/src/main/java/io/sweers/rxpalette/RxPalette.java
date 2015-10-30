@@ -17,7 +17,7 @@ public final class RxPalette {
      */
     @CheckResult @NonNull
     public static Observable<Palette> generate(@NonNull Bitmap bitmap) {
-        return Observable.create(new GeneratePaletteOnSubscribe(Palette.from(bitmap), false));
+        return Observable.create(new GeneratePaletteOnSubscribe(bitmap));
     }
 
     /**
@@ -25,22 +25,6 @@ public final class RxPalette {
      */
     @CheckResult @NonNull
     public static Observable<Palette> generate(@NonNull Palette.Builder builder) {
-        return Observable.create(new GeneratePaletteOnSubscribe(builder, false));
-    }
-
-    /**
-     * Generate the {@link Palette} asynchronously.
-     */
-    @CheckResult @NonNull
-    public static Observable<Palette> generateAsync(@NonNull Bitmap bitmap) {
-        return Observable.create(new GeneratePaletteOnSubscribe(Palette.from(bitmap), true));
-    }
-
-    /**
-     * Generate the {@link Palette} asynchronously.
-     */
-    @CheckResult @NonNull
-    public static Observable<Palette> generateAsync(@NonNull Palette.Builder builder) {
-        return Observable.create(new GeneratePaletteOnSubscribe(builder, true));
+        return Observable.create(new GeneratePaletteBuilderOnSubscribe(builder));
     }
 }
