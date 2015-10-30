@@ -13,6 +13,8 @@ dependencies {
     compile rootProject.ext.supportPalette
 
     testCompile rootProject.ext.junit
+    testCompile rootProject.ext.robolectric
+    testCompile rootProject.ext.truth
 }
 
 android {

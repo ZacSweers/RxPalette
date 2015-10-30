@@ -11,6 +11,10 @@ apply plugin: 'kotlin-android'
 dependencies {
     compile project(':rxpalette')
     compile rootProject.ext.kotlinStdlib
+
+    testCompile rootProject.ext.junit
+    testCompile rootProject.ext.robolectric
+    testCompile rootProject.ext.truth
 }
 
 android {
@@ -37,6 +41,7 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
     }
 }
 

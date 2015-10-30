@@ -63,5 +63,6 @@ ext {
     rxJava = 'io.reactivex:rxjava:1.0.14'
     rxAndroid = 'io.reactivex:rxandroid:1.0.1'
     junit = 'junit:junit:4.12'
+    robolectric = 'org.robolectric:robolectric:3.0'
     truth = 'com.google.truth:truth:0.27'
 }
