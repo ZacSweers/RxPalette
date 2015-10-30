@@ -7,12 +7,12 @@ import rx.Observable
 /**
  * Generate the `Palette` synchronously.
  */
-public inline fun Palette.generate(bitmap: Bitmap): Observable<Palette> = RxPalette.generate(bitmap)
+public inline fun Palette.asObservable(bitmap: Bitmap): Observable<Palette> = RxPalette.generate(bitmap)
 
 /**
  * Generate the `Palette` synchronously.
  */
-public inline fun Palette.Builder.generate(): Observable<Palette> = RxPalette.generate(this)
+public inline fun Palette.Builder.asObservable(): Observable<Palette> = RxPalette.generate(this)
 
 /**
  * Generate the `Palette` asynchronously.
