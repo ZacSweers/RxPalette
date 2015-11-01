@@ -6,9 +6,6 @@ RxJava binding APIs for the [Palette](palette) Android library.
 Usage
 -----
 
-*Note that these samples are representative of the current SNAPSHOT API and not 0.1.0. I will release 0.2.0 this
-weekend*
-
 Java:
 ```java
 RxPalette.generate(bitmap)
@@ -38,12 +35,12 @@ Download
 
 Java bindings:
 ```groovy
-compile 'io.sweers.rxpalette:rxpalette:0.1.0'
+compile 'io.sweers.rxpalette:rxpalette:0.2.0'
 ```
 
 Kotlin bindings:
 ```groovy
-compile 'io.sweers.rxpalette:rxpalette-kotlin:0.1.0'
+compile 'io.sweers.rxpalette:rxpalette-kotlin:0.2.0'
 ```
 
 Snapshots of the development version are available in [Sonatype's snapshots repository](snapshots).
