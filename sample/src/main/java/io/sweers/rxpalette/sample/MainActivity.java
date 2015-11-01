@@ -108,13 +108,16 @@ public class MainActivity extends AppCompatActivity {
                                     .subscribe(new Action1<Palette>() {
                                         @Override
                                         public void call(Palette palette) {
-                                            Palette.Swatch swatch = palette.getVibrantSwatch() != null ? palette
-                                                    .getVibrantSwatch() : palette.getMutedSwatch();
+                                            Palette.Swatch swatch = palette.getVibrantSwatch() != null
+                                                    ? palette.getVibrantSwatch()
+                                                    : palette.getMutedSwatch();
 
-                                            holder.textView.setTextColor(swatch != null ? swatch.getTitleTextColor()
+                                            holder.textView.setTextColor(swatch != null
+                                                    ? swatch.getTitleTextColor()
                                                     : Color.BLACK);
-                                            holder.textView.setBackgroundColor(swatch != null ? swatch.getRgb() :
-                                                    Color.WHITE);
+                                            holder.textView.setBackgroundColor(swatch != null
+                                                    ? swatch.getRgb()
+                                                    : Color.WHITE);
                                         }
                                     });
                         }
