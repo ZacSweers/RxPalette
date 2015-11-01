@@ -6,13 +6,12 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.support.v7.graphics.Palette
 import com.google.common.truth.Truth
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricGradleTestRunner
-import org.robolectric.annotation.Config
-
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
 import org.robolectric.Robolectric
+import org.robolectric.RobolectricGradleTestRunner
+import org.robolectric.annotation.Config
 import rx.observers.TestSubscriber
 import kotlin.properties.Delegates
 

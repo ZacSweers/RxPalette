@@ -1,6 +1,7 @@
 buildscript {
     dependencies {
         classpath rootProject.ext.androidPlugin
+        classpath rootProject.ext.kotlinPlugin
     }
 }
 
@@ -23,10 +24,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile rootProject.ext.supportAppCompat
+    compile rootProject.ext.supportPalette
+    compile rootProject.ext.supportRecyclerView
+    compile rootProject.ext.kotlinStdlib
+    compile rootProject.ext.rxJava
+    compile rootProject.ext.rxAndroid
+    compile rootProject.ext.retrofit
+    compile rootProject.ext.butterKnife
+    compile rootProject.ext.glide
+    compile project(':rxpalette')
+    compile project(':rxpalette-kotlin')
 }

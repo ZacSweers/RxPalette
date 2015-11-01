@@ -37,7 +37,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    androidPlugin = 'com.android.tools.build:gradle:1.3.1'
+    androidPlugin = 'com.android.tools.build:gradle:1.4.0-beta6'
     minSdkVersion = 14
     targetSdkVersion = 23
     compileSdkVersion = 23
@@ -45,15 +45,13 @@ ext {
 
     ci = 'true'.equals(System.getenv('CI'))
 
-    def kotlinVersion = '1.0.0-beta-1038'
+    def kotlinVersion = '1.0.0-beta-1103'
     kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
     def supportVersion = '23.1.0'
     supportAnnotations = "com.android.support:support-annotations:$supportVersion"
     supportV4 = "com.android.support:support-v4:$supportVersion"
-    supportRecyclerView = "com.android.support:recyclerview-v7:$supportVersion"
-    supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
     supportPalette = "com.android.support:palette-v7:$supportVersion"
 
     supportTestRunner = 'com.android.support.test:runner:0.4'
@@ -61,8 +59,15 @@ ext {
     supportTestEspresso = 'com.android.support.test.espresso:espresso-core:2.2.1'
     supportTestEspressoContrib = 'com.android.support.test.espresso:espresso-contrib:2.2.1'
     rxJava = 'io.reactivex:rxjava:1.0.14'
-    rxAndroid = 'io.reactivex:rxandroid:1.0.1'
     junit = 'junit:junit:4.12'
     robolectric = 'org.robolectric:robolectric:3.0'
     truth = 'com.google.truth:truth:0.27'
+
+    // Sample app dependencies
+    supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
+    rxAndroid = 'io.reactivex:rxandroid:1.0.1'
+    supportRecyclerView = "com.android.support:recyclerview-v7:$supportVersion"
+    retrofit = 'com.squareup.retrofit:retrofit:1.9.0'
+    butterKnife = 'com.jakewharton:butterknife:7.0.1'
+    glide = 'com.github.bumptech.glide:glide:3.6.1'
 }
