@@ -1,9 +1,17 @@
 package io.sweers.rxpalette.sample.api;
 
+import com.squareup.okhttp.Interceptor;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import java.io.IOException;
+
 import io.sweers.rxpalette.sample.api.model.Album;
 import io.sweers.rxpalette.sample.api.service.AlbumService;
-import retrofit.RequestInterceptor;
-import retrofit.RestAdapter;
+import retrofit.MoshiConverterFactory;
+import retrofit.Retrofit;
+import retrofit.RxJavaCallAdapterFactory;
 import rx.Observable;
 
 /**
@@ -15,7 +23,6 @@ import rx.Observable;
  */
 public class ImgurApi {
 
-    private final RestAdapter restAdapter;
     private final AlbumService albumService;
 
     /**
@@ -24,16 +31,22 @@ public class ImgurApi {
      * @param clientId The client id.
      */
     public ImgurApi(final String clientId) {
-        restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://api.imgur.com/3")
-                .setRequestInterceptor(new RequestInterceptor() {
-                    @Override
-                    public void intercept(final RequestFacade request) {
-                        request.addHeader("Authorization", "Client-ID " + clientId);
-                    }
-                })
-                .build();
-        albumService = restAdapter.create(AlbumService.class);
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.interceptors().add(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request();
+                request = request.newBuilder().addHeader("Authorization", "Client-ID " + clientId).build();
+                return chain.proceed(request);
+            }
+        });
+        albumService = new Retrofit.Builder()
+                .baseUrl("https://api.imgur.com/3/")
+                .client(okHttpClient)
+                .addConverterFactory(MoshiConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build()
+                .create(AlbumService.class);
     }
 
     /**

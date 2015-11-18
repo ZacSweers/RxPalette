@@ -18,7 +18,6 @@ public class Album extends Model {
     public int views;
     public String link;
     public boolean favorite;
-    public boolean nsfw;
     public String section;
     public int order;
     public String deletehash;

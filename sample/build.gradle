@@ -38,8 +38,12 @@ dependencies {
     compile rootProject.ext.rxJava
     compile rootProject.ext.rxAndroid
     compile rootProject.ext.retrofit
+    compile rootProject.ext.retrofitMoshi
+    compile rootProject.ext.retrofitRxJava
+    compile rootProject.ext.okhttp
     compile rootProject.ext.butterKnife
     compile rootProject.ext.glide
+    compile rootProject.ext.glideOkhttp
     compile project(':rxpalette')
     compile project(':rxpalette-kotlin')
 }

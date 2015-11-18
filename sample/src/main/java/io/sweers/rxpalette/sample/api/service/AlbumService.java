@@ -14,9 +14,9 @@ import rx.Observable;
  */
 public interface AlbumService {
 
-    @GET("/album/{id}")
+    @GET("album/{id}")
     Observable<ImgurResponse<Album>> getAlbum(@Path("id") String id);
 
-    @GET("/album/{albumId}/{imageId}")
+    @GET("album/{albumId}/{imageId}")
     Observable<ImgurResponse<Image>> getAlbumImage(@Path("albumId") String albumId, @Path("imageId") String imageId);
 }

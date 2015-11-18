@@ -22,7 +22,6 @@ public class Image extends Model {
     public String webm;
     public boolean looping;
     public boolean favorite;
-    public boolean nsfw;
     public String vote;
     public String account_url;
     public String account_id;

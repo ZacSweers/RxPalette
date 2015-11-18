@@ -10,7 +10,8 @@ public final class RxPaletteSampleApplication extends Application {
 
     private ImgurApi imgurApi;
 
-    @Override public void onCreate() {
+    @Override
+    public void onCreate() {
         super.onCreate();
         instance = this;
         imgurApi = new ImgurApi("4e2bb69101e4b13");
