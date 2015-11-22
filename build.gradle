@@ -58,7 +58,7 @@ ext {
     supportTestRules = 'com.android.support.test:rules:0.4'
     supportTestEspresso = 'com.android.support.test.espresso:espresso-core:2.2.1'
     supportTestEspressoContrib = 'com.android.support.test.espresso:espresso-contrib:2.2.1'
-    rxJava = 'io.reactivex:rxjava:1.0.15'
+    rxJava = 'io.reactivex:rxjava:1.0.16'
     junit = 'junit:junit:4.12'
     robolectric = 'org.robolectric:robolectric:3.0'
     truth = 'com.google.truth:truth:0.27'
@@ -76,4 +76,9 @@ ext {
     retrofit = "com.squareup.retrofit:retrofit:$retrofitVersion"
     retrofitMoshi = "com.squareup.retrofit:converter-moshi:$retrofitVersion"
     retrofitRxJava = "com.squareup.retrofit:adapter-rxjava:$retrofitVersion"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.9'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
 }
