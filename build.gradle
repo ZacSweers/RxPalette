@@ -37,7 +37,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    androidPlugin = 'com.android.tools.build:gradle:1.5.0'
+    androidPlugin = 'com.android.tools.build:gradle:2.0.0-alpha1'
     minSdkVersion = 14
     targetSdkVersion = 23
     compileSdkVersion = 23
