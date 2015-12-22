@@ -37,7 +37,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    androidPlugin = 'com.android.tools.build:gradle:2.0.0-alpha2'
+    androidPlugin = 'com.android.tools.build:gradle:2.0.0-alpha3'
     minSdkVersion = 14
     targetSdkVersion = 23
     compileSdkVersion = 23
@@ -45,7 +45,7 @@ ext {
 
     ci = 'true'.equals(System.getenv('CI'))
 
-    def kotlinVersion = '1.0.0-beta-3595'
+    def kotlinVersion = '1.0.0-beta-4583'
     kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
