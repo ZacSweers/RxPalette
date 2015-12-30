@@ -13,7 +13,7 @@ jdk:
   - oraclejdk8
 
 script:
-  - ./gradlew ":$MODULE:build" ":$MODULE-kotlin:build" ":$MODULE:test" ":$MODULE-kotlin:test"
+  - ./gradlew ":$MODULE:build" ":$MODULE-kotlin:build"
 
 after_success:
   - .buildscript/deploy_snapshot.sh
