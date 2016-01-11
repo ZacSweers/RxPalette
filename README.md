@@ -1,7 +1,7 @@
 RxPalette
 =========
 
-RxJava binding APIs for the [Palette](palette) Android library.
+RxJava binding APIs for the [Palette][palette] Android library.
 
 Usage
 -----
@@ -43,7 +43,7 @@ Kotlin bindings:
 compile 'io.sweers.rxpalette:rxpalette-kotlin:0.2.0'
 ```
 
-Snapshots of the development version are available in [Sonatype's snapshots repository](snapshots).
+Snapshots of the development version are available in [Sonatype's snapshots repository][snapshots].
 
 License
 -------
