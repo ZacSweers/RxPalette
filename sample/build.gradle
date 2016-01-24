@@ -41,6 +41,7 @@ dependencies {
     compile rootProject.ext.retrofitMoshi
     compile rootProject.ext.retrofitRxJava
     compile rootProject.ext.okhttp
+    compile rootProject.ext.okhttp3
     compile rootProject.ext.butterKnife
     compile rootProject.ext.glide
     compile rootProject.ext.glideOkhttp

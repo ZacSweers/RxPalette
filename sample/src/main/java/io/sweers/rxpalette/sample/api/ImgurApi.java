@@ -1,17 +1,16 @@
 package io.sweers.rxpalette.sample.api;
 
-import com.squareup.okhttp.Interceptor;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-
 import java.io.IOException;
 
 import io.sweers.rxpalette.sample.api.model.Album;
 import io.sweers.rxpalette.sample.api.service.AlbumService;
-import retrofit.MoshiConverterFactory;
-import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import retrofit2.MoshiConverterFactory;
+import retrofit2.Retrofit;
+import retrofit2.RxJavaCallAdapterFactory;
 import rx.Observable;
 
 /**
@@ -31,15 +30,16 @@ public class ImgurApi {
      * @param clientId The client id.
      */
     public ImgurApi(final String clientId) {
-        OkHttpClient okHttpClient = new OkHttpClient();
-        okHttpClient.interceptors().add(new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Request request = chain.request();
-                request = request.newBuilder().addHeader("Authorization", "Client-ID " + clientId).build();
-                return chain.proceed(request);
-            }
-        });
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Interceptor.Chain chain) throws IOException {
+                        Request request = chain.request();
+                        request = request.newBuilder().addHeader("Authorization", "Client-ID " + clientId).build();
+                        return chain.proceed(request);
+                    }
+                })
+                .build();
         albumService = new Retrofit.Builder()
                 .baseUrl("https://api.imgur.com/3/")
                 .client(okHttpClient)
