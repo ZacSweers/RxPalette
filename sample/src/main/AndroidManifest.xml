@@ -23,7 +23,7 @@
             android:name="io.sweers.rxpalette.sample.GlideConfiguration"
             android:value="GlideModule" />
         <meta-data
-            android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule"
+            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
             android:value="GlideModule" />
     </application>
 
