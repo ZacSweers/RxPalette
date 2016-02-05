@@ -37,7 +37,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    androidPlugin = 'com.android.tools.build:gradle:2.0.0-alpha9'
+    androidPlugin = 'com.android.tools.build:gradle:2.0.0-beta2'
     minSdkVersion = 14
     targetSdkVersion = 23
     compileSdkVersion = 23
@@ -45,7 +45,7 @@ ext {
 
     ci = 'true'.equals(System.getenv('CI'))
 
-    def kotlinVersion = '1.0.0-beta-4589'
+    def kotlinVersion = '1.0.0-rc-1036'
     kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
@@ -72,7 +72,7 @@ ext {
     glideOkhttp = 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     okhttp3 = 'com.squareup.okhttp3:okhttp:3.0.1'
 
-    def retrofitVersion = '2.0.0-beta3'
+    def retrofitVersion = '2.0.0-beta4'
     retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
     retrofitMoshi = "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
