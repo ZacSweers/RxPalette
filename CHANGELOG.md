@@ -1,6 +1,21 @@
 Change Log
 ==========
 
+Version 0.3.1-SNAPSHOT *In Development*
+----------------------------
+
+Version 0.3.0 *2016-2-5*
+----------------------------
+
+* Uses RxJava's new `fromCallable()` API under the hood now
+* Dependency updates
+  * RxJava 1.1.0
+  * Support libraries 23.1.1
+  * Kotlin 1.0.0-rc-1036
+
+Note that there will probably be a patch release when Kotlin goes release 1.0.0. Doing the release
+now because rc-1036 introduced some backward-incompatible class file changes.
+
 Version 0.2.0 *2015-11-1*
 ----------------------------
 

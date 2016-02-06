@@ -35,12 +35,12 @@ Download
 
 Java bindings:
 ```groovy
-compile 'io.sweers.rxpalette:rxpalette:0.2.0'
+compile 'io.sweers.rxpalette:rxpalette:0.3.0'
 ```
 
 Kotlin bindings:
 ```groovy
-compile 'io.sweers.rxpalette:rxpalette-kotlin:0.2.0'
+compile 'io.sweers.rxpalette:rxpalette-kotlin:0.3.0'
 ```
 
 Snapshots of the development version are available in [Sonatype's snapshots repository][snapshots].
