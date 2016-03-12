@@ -30,7 +30,7 @@ import io.sweers.rxpalette.RxPalette;
 import io.sweers.rxpalette.sample.api.ImgurResponse;
 import io.sweers.rxpalette.sample.api.model.Album;
 import io.sweers.rxpalette.sample.api.model.Image;
-import rx.Observer;
+import rx.SingleSubscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
@@ -57,24 +57,19 @@ public class MainActivity extends AppCompatActivity {
                 .getAlbum("jx90V")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ImgurResponse<Album>>() {
+                .subscribe(new SingleSubscriber<ImgurResponse<Album>>() {
                     @Override
-                    public void onCompleted() {
-
+                    public void onSuccess(ImgurResponse<Album> albumImgurResponse) {
+                        Adapter adapter = new Adapter(albumImgurResponse.data.images);
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
+                        recyclerView.setAdapter(adapter);
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Toast.makeText(MainActivity.this, "Error: " + e, Toast.LENGTH_LONG).show();
                         Log.e("ERROR", "OnError", e);
-                    }
-
-                    @Override
-                    public void onNext(ImgurResponse<Album> albumImgurResponse) {
-                        Adapter adapter = new Adapter(albumImgurResponse.data.images);
-                        progressBar.setVisibility(View.GONE);
-                        recyclerView.setVisibility(View.VISIBLE);
-                        recyclerView.setAdapter(adapter);
                     }
                 });
     }

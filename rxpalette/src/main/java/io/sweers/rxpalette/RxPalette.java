@@ -7,19 +7,19 @@ import android.support.v7.graphics.Palette;
 
 import java.util.concurrent.Callable;
 
-import rx.Observable;
+import rx.Single;
 
 /**
- * Static factory methods for creating {@linkplain Observable observables} for {@link Palette}.
+ * Static factory methods for creating {@linkplain Single singles} for {@link Palette}.
  */
 public final class RxPalette {
 
     /**
-     * Generate the {@link Palette} synchronously.
+     * Returns a {@linkplain Single single} that emits a {@linkplain Palette palette} from the source {@code bitmap}
      */
     @CheckResult @NonNull
-    public static Observable<Palette> generate(@NonNull final Bitmap bitmap) {
-        return Observable.fromCallable(new Callable<Palette>() {
+    public static Single<Palette> generate(@NonNull final Bitmap bitmap) {
+        return Single.fromCallable(new Callable<Palette>() {
             @Override
             public Palette call() throws Exception {
                 return Palette.from(bitmap).generate();
@@ -28,11 +28,11 @@ public final class RxPalette {
     }
 
     /**
-     * Generate the {@link Palette} synchronously.
+     * Returns a {@linkplain Single single} that emits a {@linkplain Palette palette} from the source {@code bitmap}
      */
     @CheckResult @NonNull
-    public static Observable<Palette> generate(@NonNull final Palette.Builder builder) {
-        return Observable.fromCallable(new Callable<Palette>() {
+    public static Single<Palette> generate(@NonNull final Palette.Builder builder) {
+        return Single.fromCallable(new Callable<Palette>() {
             @Override
             public Palette call() throws Exception {
                 return builder.generate();

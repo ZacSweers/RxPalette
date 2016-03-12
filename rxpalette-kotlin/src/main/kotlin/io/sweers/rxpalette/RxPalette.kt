@@ -1,9 +1,9 @@
 package io.sweers.rxpalette
 
 import android.support.v7.graphics.Palette
-import rx.Observable
+import rx.Single
 
 /**
- * Generate the `Palette` synchronously.
+ * Returns a [single][Single] that emits a [palette][Palette] from the source `bitmap`
  */
-public inline fun Palette.Builder.asObservable(): Observable<Palette> = RxPalette.generate(this)
+public inline fun Palette.Builder.asSingle(): Single<Palette> = RxPalette.generate(this)

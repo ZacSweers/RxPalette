@@ -11,7 +11,7 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.moshi.MoshiConverterFactory;
-import rx.Observable;
+import rx.Single;
 
 /**
  * The core class of the Imgur API.
@@ -55,7 +55,7 @@ public class ImgurApi {
      * @param id The id of the album.
      * @return A response containing information about the album.
      */
-    public Observable<ImgurResponse<Album>> getAlbum(final String id) {
+    public Single<ImgurResponse<Album>> getAlbum(final String id) {
         return albumService.getAlbum(id);
     }
 }

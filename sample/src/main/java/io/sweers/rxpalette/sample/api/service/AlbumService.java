@@ -5,7 +5,7 @@ import io.sweers.rxpalette.sample.api.model.Album;
 import io.sweers.rxpalette.sample.api.model.Image;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import rx.Observable;
+import rx.Single;
 
 /**
  * An interface containing all album related services used by the Retrofit REST client.
@@ -15,8 +15,8 @@ import rx.Observable;
 public interface AlbumService {
 
     @GET("album/{id}")
-    Observable<ImgurResponse<Album>> getAlbum(@Path("id") String id);
+    Single<ImgurResponse<Album>> getAlbum(@Path("id") String id);
 
     @GET("album/{albumId}/{imageId}")
-    Observable<ImgurResponse<Image>> getAlbumImage(@Path("albumId") String albumId, @Path("imageId") String imageId);
+    Single<ImgurResponse<Image>> getAlbumImage(@Path("albumId") String albumId, @Path("imageId") String imageId);
 }
