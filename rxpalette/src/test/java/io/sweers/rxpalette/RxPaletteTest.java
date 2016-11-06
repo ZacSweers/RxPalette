@@ -13,11 +13,7 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
-import java.util.List;
-
-import rx.observers.TestSubscriber;
-
-import static com.google.common.truth.Truth.assertThat;
+import io.reactivex.subscribers.TestSubscriber;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
@@ -33,36 +29,29 @@ public class RxPaletteTest {
 
     @Test
     public void testGenerate() {
-        TestSubscriber<Palette> testSubscriber = new TestSubscriber<>();
         RxPalette.generate(bitmap)
-                .subscribe(testSubscriber);
-        testSubscriber.assertNoErrors();
-        testSubscriber.assertCompleted();
-        List<Palette> onNextEvents = testSubscriber.getOnNextEvents();
-        assertThat(onNextEvents).isNotEmpty();
-        assertThat(onNextEvents).hasSize(1);
+                .test()
+                .assertNoErrors()
+                .assertComplete()
+                .assertValueCount(1);
     }
 
     @Test
     public void testBuilderGenerate() {
-        TestSubscriber<Palette> testSubscriber = new TestSubscriber<>();
         RxPalette.generate(Palette.from(bitmap))
-                .subscribe(testSubscriber);
-        testSubscriber.assertNoErrors();
-        testSubscriber.assertCompleted();
-        List<Palette> onNextEvents = testSubscriber.getOnNextEvents();
-        assertThat(onNextEvents).isNotEmpty();
-        assertThat(onNextEvents).hasSize(1);
+                .test()
+                .assertNoErrors()
+                .assertComplete()
+                .assertValueCount(1);
     }
 
     @Test
     public void testNullGenerate() {
-        TestSubscriber<Palette> testSubscriber = new TestSubscriber<>();
         Bitmap nullBitmap = null;
         //noinspection ConstantConditions
         RxPalette.generate(nullBitmap)
-                .subscribe(testSubscriber);
-        testSubscriber.assertError(IllegalArgumentException.class);
+                .test()
+        		.assertError(IllegalArgumentException.class);
     }
 
     @Test
@@ -71,7 +60,7 @@ public class RxPaletteTest {
         Palette.Builder nullBuilder = null;
         //noinspection ConstantConditions
         RxPalette.generate(nullBuilder)
-                .subscribe(testSubscriber);
-        testSubscriber.assertError(NullPointerException.class);
+                .test()
+				.assertError(NullPointerException.class);
     }
 }

@@ -1,7 +1,10 @@
 package io.sweers.rxpalette.sample.api;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
 import java.io.IOException;
 
+import io.reactivex.Single;
 import io.sweers.rxpalette.sample.api.model.Album;
 import io.sweers.rxpalette.sample.api.service.AlbumService;
 import okhttp3.Interceptor;
@@ -9,9 +12,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.moshi.MoshiConverterFactory;
-import rx.Single;
 
 /**
  * The core class of the Imgur API.
@@ -44,7 +45,7 @@ public class ImgurApi {
                 .baseUrl("https://api.imgur.com/3/")
                 .client(okHttpClient)
                 .addConverterFactory(MoshiConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
                 .create(AlbumService.class);
     }

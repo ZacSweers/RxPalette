@@ -37,7 +37,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    androidPlugin = 'com.android.tools.build:gradle:2.0.0-beta6'
+    androidPlugin = 'com.android.tools.build:gradle:2.2.2'
     minSdkVersion = 14
     targetSdkVersion = 23
     compileSdkVersion = 23
@@ -58,14 +58,14 @@ ext {
     supportTestRules = 'com.android.support.test:rules:0.4'
     supportTestEspresso = 'com.android.support.test.espresso:espresso-core:2.2.1'
     supportTestEspressoContrib = 'com.android.support.test.espresso:espresso-contrib:2.2.1'
-    rxJava = 'io.reactivex:rxjava:1.1.1'
+    rxJava = 'io.reactivex.rxjava2:rxjava:2.0.0'
     junit = 'junit:junit:4.12'
     robolectric = 'org.robolectric:robolectric:3.0'
     truth = 'com.google.truth:truth:0.27'
 
     // Sample app dependencies
     supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
-    rxAndroid = 'io.reactivex:rxandroid:1.1.0'
+    rxAndroid = 'io.reactivex.rxjava2:rxandroid:2.0.0'
     supportRecyclerView = "com.android.support:recyclerview-v7:$supportVersion"
     butterKnife = 'com.jakewharton:butterknife:7.0.1'
     glide = 'com.github.bumptech.glide:glide:3.7.0'
@@ -75,10 +75,10 @@ ext {
     def retrofitVersion = '2.0.0'
     retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
     retrofitMoshi = "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
-    retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+    retrofitRxJava = "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0"
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.11'
+    gradleVersion = '2.14.1'
     distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
 }

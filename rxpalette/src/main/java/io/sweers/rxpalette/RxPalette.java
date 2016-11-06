@@ -7,7 +7,7 @@ import android.support.v7.graphics.Palette;
 
 import java.util.concurrent.Callable;
 
-import rx.Single;
+import io.reactivex.Single;
 
 /**
  * Static factory methods for creating {@linkplain Single singles} for {@link Palette}.

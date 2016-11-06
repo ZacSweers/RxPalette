@@ -1,7 +1,7 @@
 package io.sweers.rxpalette
 
 import android.support.v7.graphics.Palette
-import rx.Single
+import io.reactivex.Single
 
 /**
  * Returns a [single][Single] that emits a [palette][Palette] from the source `bitmap`

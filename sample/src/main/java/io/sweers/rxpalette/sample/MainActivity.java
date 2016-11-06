@@ -26,14 +26,14 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 import io.sweers.rxpalette.RxPalette;
 import io.sweers.rxpalette.sample.api.ImgurResponse;
 import io.sweers.rxpalette.sample.api.model.Album;
 import io.sweers.rxpalette.sample.api.model.Image;
-import rx.SingleSubscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 .getAlbum("jx90V")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleSubscriber<ImgurResponse<Album>>() {
+                .subscribe(new DisposableSingleObserver<ImgurResponse<Album>>() {
                     @Override
                     public void onSuccess(ImgurResponse<Album> albumImgurResponse) {
                         Adapter adapter = new Adapter(albumImgurResponse.data.images);
@@ -102,9 +102,9 @@ public class MainActivity extends AppCompatActivity {
                             RxPalette.generate(bitmap)
                                     .subscribeOn(Schedulers.computation())
                                     .observeOn(AndroidSchedulers.mainThread())
-                                    .subscribe(new Action1<Palette>() {
+                                    .subscribe(new Consumer<Palette>() {
                                         @Override
-                                        public void call(Palette palette) {
+                                        public void accept(Palette palette) {
                                             Palette.Swatch swatch = palette.getVibrantSwatch() != null
                                                     ? palette.getVibrantSwatch()
                                                     : palette.getMutedSwatch();
