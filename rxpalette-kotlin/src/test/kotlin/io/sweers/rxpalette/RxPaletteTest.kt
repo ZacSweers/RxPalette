@@ -5,18 +5,16 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.support.v7.graphics.Palette
-import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
-import org.robolectric.RobolectricGradleTestRunner
+import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
-import rx.observers.TestSubscriber
 import kotlin.properties.Delegates
 
 
-@RunWith(RobolectricGradleTestRunner::class)
+@RunWith(RobolectricTestRunner::class)
 @Config(constants = BuildConfig::class, sdk = intArrayOf(21))
 public class RxPaletteTest {
 
@@ -28,21 +26,15 @@ public class RxPaletteTest {
     }
 
     @Test fun testBuilderGenerate() {
-        val testSubscriber = TestSubscriber<Palette>()
-        Palette.Builder(bitmap).asSingle().subscribe(testSubscriber)
-        testSubscriber.assertNoErrors()
-        testSubscriber.assertCompleted()
-        val onNextEvents = testSubscriber.onNextEvents
-        assertThat<Palette, Iterable<Palette>>(onNextEvents).isNotEmpty()
-        assertThat<Palette, Iterable<Palette>>(onNextEvents).hasSize(1)
+        Palette.Builder(bitmap).asSingle()
+            .test()
+            .assertNoErrors()
+            .assertComplete()
+            .assertValueCount(1)
     }
 
     @Test fun testNullBuilderGenerate() {
-        val testSubscriber = TestSubscriber<Palette>()
         val nullBuilder: Palette.Builder? = null
-        nullBuilder?.asSingle()?.subscribe(testSubscriber)
-        assertThat(testSubscriber.onNextEvents).isEmpty()
-        assertThat(testSubscriber.onCompletedEvents).isEmpty()
-        assertThat(testSubscriber.onErrorEvents).isEmpty()
+        nullBuilder?.asSingle()?.test()?.assertNoErrors()?.assertNoValues()?.assertNotComplete()
     }
 }
